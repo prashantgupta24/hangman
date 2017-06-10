@@ -1,6 +1,6 @@
 $(function() {
 
-  let hangman = game;
+  let hangman = hangmanGame;
   hangman.canvas = {
     canvasElement: document.getElementById('wordCanvas'),
     ctx: document.getElementById('wordCanvas').getContext('2d'),
@@ -37,7 +37,7 @@ $(function() {
 
 });
 
-let game = {
+let hangmanGame = {
   movieNames: ['wonder woman', 'monty python and the holy grail', 'being john malkovich',
     'the dark knight', 'how to train your dragon', 'la la land', 'the road to el dorado',
     'gladiator', 'the secret life of walter mitty', 'harry potter and the order of the phoenix'],
@@ -86,7 +86,7 @@ let game = {
       this.canvas.ctx.fillText(this.blankMovieName.charAt(i), x, y);
     }
     if(this.blankMovieName.indexOf('_') == -1) {
-      setTimeout(function () {game.resetPlay('won');}, 10);
+      setTimeout(function () {hangmanGame.resetPlay('won');}, 10);
     }
   },
   revealChar: function (char) {
@@ -144,7 +144,7 @@ want to continue?';
       $(this.chancesElem).text(--curChances);
     }
     if(curChances == 0) {
-      setTimeout(function () {game.resetPlay('lost');}, 10);
+      setTimeout(function () {hangmanGame.resetPlay('lost');}, 10);
     }
   }
 };
