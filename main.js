@@ -105,11 +105,18 @@ let hangmanGame = {
   },
   processKey:function (keyCode) {
     let keyPressed = String.fromCharCode(keyCode).toLowerCase();
+    this.showToast(keyPressed);
     if(this.movieName.indexOf(keyPressed) > -1) {
       this.revealChar(keyPressed);
     } else {
       this.wrongGuess(keyPressed);
     }
+  },
+  showToast: function (keyPressed) {
+    var toastElem = $('#toast');
+    toastElem.html(keyPressed);
+    toastElem.attr('class', 'show');
+    setTimeout(function(){ toastElem.attr('class', ''); }, 1000);
   },
   resetPlay: function (gameStatus) {
     let gameEndMessage = '';
